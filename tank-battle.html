@@ -564,19 +564,19 @@
     const baseCol = Math.floor(COLS / 2) - 1;
     map[baseRow][baseCol] = 3;
     map[baseRow][baseCol + 1] = 3;
-    // Base walls
+    // Base walls - leave passages on both sides
     map[baseRow - 1][baseCol] = 1;
     map[baseRow - 1][baseCol + 1] = 1;
-    map[baseRow][baseCol - 1] = 1;
-    map[baseRow][baseCol + 2] = 1;
+    map[baseRow - 1][baseCol - 1] = 1;
+    map[baseRow - 1][baseCol + 2] = 1;
   }
 
   // ---- Spawn Player ----
   function spawnPlayer() {
     const pw = TILE * 2, ph = TILE * 2;
     player = new Tank(
-      (COLS / 2 - 0.5) * TILE - pw / 2,
-      (ROWS - 5) * TILE,
+      0,
+      (ROWS - 3) * TILE,
       '#3498db', true
     );
     player.dir = 'up';
